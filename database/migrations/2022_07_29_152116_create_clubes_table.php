@@ -16,8 +16,8 @@ class CreateClubesTable extends Migration
         Schema::create('clubes', function (Blueprint $table) {
             $table->id();
             $table->string('equipo')->unique();
-            $table->string('liga');
-            // $table->enum('liga',['ing','esp','ita','ale','fra']);
+            $table->unsignedBigInteger('idLiga');
+            $table->foreign('idLiga')->references('id')->on('ligas');
             $table->timestamps();
         });
     }

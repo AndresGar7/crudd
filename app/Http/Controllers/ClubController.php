@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
+use App\Models\Liga;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClubRequest;
+use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller
 {
@@ -14,8 +17,12 @@ class ClubController extends Controller
      */
     public function index()
     {
-        $clubes = Club::all();
-        return view('clubes.index', compact('clubes'));
+        $equipos = DB::table('clubes')
+        ->join('ligas', 'clubes.idLiga', '=', 'ligas.id')
+        ->select('clubes.*', 'ligas.nombre')
+        ->get();
+
+        return view('clubes.index', compact('equipos'));
     }
 
     /**
@@ -25,7 +32,8 @@ class ClubController extends Controller
      */
     public function create()
     {
-        //
+        $ligas = Liga::all();
+        return view('clubes.create', compact('ligas'));
     }
 
     /**
@@ -34,9 +42,14 @@ class ClubController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(ClubRequest $request)
+    {   
+        
+        Club::create([
+            'equipo' => request('name'),
+            'idLiga' => request('liga')
+        ]);
+        return redirect()->route('club.index')->with('creado','ok');
     }
 
     /**
@@ -56,9 +69,19 @@ class ClubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Club $id)
     {
-        //
+        $ligas = Liga::all();
+        
+
+        $ligaClub = Liga::where('id', $id['idLiga'])->select('ligas.*')->first();
+        $id['nombreLiga'] = $ligaClub->nombre;
+        // $id['liga'] = $ligaClub->id; 
+
+        return view('clubes.edit',[
+            'club' => $id,
+            'ligas' => $ligas
+        ]);
     }
 
     /**
@@ -68,9 +91,16 @@ class ClubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Club $club)
     {
-        //
+
+        // return request('liga');
+        $club->update([
+            'equipo' => request('name'),
+            'idLiga' => request('liga')
+        ]);
+    
+        return redirect()->route('club.index')->with('actualizado','ok');
     }
 
     /**
@@ -79,8 +109,9 @@ class ClubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Club $club)
     {
-        //
+        $club->delete();
+        return redirect()->route('club.index', $club);
     }
 }

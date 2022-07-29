@@ -7,7 +7,6 @@
 @section('content')
     <div class="card-header">
         <h5 class="card-title">CRUD de Equipos</h5>
-        
     </div>
     <div class="card-body">
         <div class="row p-2 mb-3">
@@ -26,22 +25,24 @@
                                 <th>Liga</th>
                                 <th>#Jugadores</th>
                                 <th>Fecha Creacion</th>
-                                <th>Fecha Actualización</th>
+                                <th>Realizar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($clubes as $club)
+                            @forelse ($equipos as $club)
                                 <tr>
                                     <td class="text-center">{{ $club->id }}</td>
                                     <td class="text-center">{{ $club->equipo }}</td>
-                                    <td class="text-center">{{ $club->liga }}</td>
+                                    <td class="text-center">{{ $club->nombre }}</td>
                                     <td></td>
-                                    <td class="text-center">{{ $club->created_at->format('d-m-Y') }}</td>
-                                    <td class="text-center">{{ $club->updated_at->format('d-m-Y') }}</td>
+                                    <td class="text-center">{{ $club->created_at }}</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-outline-dark btn-lg align-center" href="{{ route('club.edit', $club->id) }}">Ver</a>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center">No hay noticias para mostrar</td>
+                                    <td colspan="6" class="text-center">No hay equipos para mostrar</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -52,7 +53,7 @@
                                 <th>Liga</th>
                                 <th>#Jugadores</th>
                                 <th>Fecha Creacion</th>
-                                <th>Fecha Actualización</th>
+                                <th>Realizar</th>
                             </tr>
                         </tfoot>
                     </table>

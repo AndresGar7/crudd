@@ -13,7 +13,8 @@ class JugadorController extends Controller
      */
     public function index()
     {
-        //
+        $equipos = [];
+        return view('clubes.index', compact('equipos'));
     }
 
     /**
