@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClubTable extends Migration
+class CreateJugadoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateClubTable extends Migration
      */
     public function up()
     {
-        Schema::create('club', function (Blueprint $table) {
+        Schema::create('jugadores', function (Blueprint $table) {
             $table->id();
-            $table->string('equipo')->unique();
-            $table->string('liga');
-            // $table->enum('liga',['ing','esp','ita','ale','fra']);
+            $table->string('nombre');
+            $table->integer('edad');
+            $table->string('equipo');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateClubTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('club');
+        Schema::dropIfExists('jugadores');
     }
 }
