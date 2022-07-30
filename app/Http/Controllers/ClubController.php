@@ -91,8 +91,9 @@ class ClubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Club $club)
+    public function update(Club $club,ClubRequest $request)
     {
+
 
         // return request('liga');
         $club->update([

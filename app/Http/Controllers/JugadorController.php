@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
+use App\Models\Jugador;
 use Illuminate\Http\Request;
+use App\Http\Requests\JugadorRecuest;
 
 class JugadorController extends Controller
 {
@@ -13,8 +16,8 @@ class JugadorController extends Controller
      */
     public function index()
     {
-        $equipos = [];
-        return view('clubes.index', compact('equipos'));
+        $jugadores = Jugador::all();
+        return view('jugadores.index', compact('jugadores'));
     }
 
     /**
@@ -24,7 +27,9 @@ class JugadorController extends Controller
      */
     public function create()
     {
-        //
+        $equipos = Club::all();
+        // dd($equipos);
+        return view('jugadores.create', compact('equipos'));
     }
 
     /**
@@ -33,9 +38,16 @@ class JugadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JugadorRecuest $request)
     {
-        //
+        $equipo = Club::where('id',request('club'))->first();
+        Jugador::create([
+            'idEquipo' => request('club'),
+            'nombre' => request('name'),
+            'edad' => request('age'),
+            'equipo' => $equipo->equipo
+        ]);
+        return redirect()->route('jugador.index')->with('creado','ok');
     }
 
     /**
@@ -55,9 +67,18 @@ class JugadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Jugador $id)
     {
-        //
+        $clubes = Club::all();
+    
+        $jugadorClub = Club::where('id', $id['idEquipo'])->select('clubes.*')->first();
+        $id['nombreEquipo'] = $jugadorClub->equipo;
+        $id['liga'] = $jugadorClub->id; 
+
+        return view('jugadores.edit',[
+            'jugador' => $id,
+            'clubes' => $clubes
+        ]);
     }
 
     /**
@@ -67,9 +88,19 @@ class JugadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Jugador $jugador, JugadorRecuest $request)
     {
-        //
+
+        // dd($jugador);
+        $equipo = Club::where('id',request('club'))->first();
+        $jugador->update([
+            'idEquipo' => request('club'),
+            'nombre' => request('name'),
+            'edad' => request('age'),
+            'equipo' => $equipo->equipo
+        ]);
+
+        return redirect()->route('jugador.index')->with('actualizado','ok');
     }
 
     /**
@@ -78,8 +109,9 @@ class JugadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Jugador $jugador)
     {
-        //
+        $jugador->delete();
+        return redirect()->route('jugador.index', $jugador);
     }
 }

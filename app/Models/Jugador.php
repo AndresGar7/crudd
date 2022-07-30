@@ -18,6 +18,7 @@ class Jugador extends Model
     protected $fillable = [
         'nombre',
         'edad',
-        'equipo'
+        'equipo',
+        'idEquipo'
     ];
 }

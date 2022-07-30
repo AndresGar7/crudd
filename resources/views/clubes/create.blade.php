@@ -1,6 +1,6 @@
 @extends('layout.layout')
 
-@section('plugins.SweetAlert2', true)
+{{-- @section('plugins.SweetAlert2', true) --}}
 
 @section('title','Crear')
 

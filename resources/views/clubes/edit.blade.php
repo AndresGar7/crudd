@@ -15,6 +15,9 @@
                         <label for="name">Nombre del Club</label>
                         <input type="text" class="form-control col-8" name="name" id="name" aria-describedby="helpId" value="{{ old('name', $club->equipo) }}">
                     </div>
+                    @error('name')
+                        <div class="alert alert-danger">{!! $errors->first('name', '<small>:message</small>') !!}</div>
+                    @enderror
                     <div class="form-group">
                         <label for="liga">Liga</label>
                         <select class="form-control col-6" name="liga" id="liga">
@@ -34,7 +37,6 @@
                             @csrf @method('DELETE')
                             <button  class="btn btn-danger d-flex justify-content-between mx-2">Eliminar</button>
                         </form>
-                        {{-- <button type="button" onclick="cancelar()" class="btn btn-secondary btn-lg mx-3">Cancelar</button> --}}
                     </div>
                 </div>
         </div>
