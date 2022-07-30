@@ -45,7 +45,6 @@
                             @csrf @method('DELETE')
                             <button  class="btn btn-danger d-flex justify-content-between mx-2" style="font-size: 23px;">Eliminar</button>
                         </form>
-                        {{-- <button type="button" onclick="cancelar()" class="btn btn-secondary btn-lg mx-3">Cancelar</button> --}}
                     </div>
                 </div>
         </div>

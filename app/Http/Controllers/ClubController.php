@@ -74,10 +74,8 @@ class ClubController extends Controller
     {
         $ligas = Liga::all();
         
-
         $ligaClub = Liga::where('id', $id['idLiga'])->select('ligas.*')->first();
         $id['nombreLiga'] = $ligaClub->nombre;
-        // $id['liga'] = $ligaClub->id; 
 
         return view('clubes.edit',[
             'club' => $id,

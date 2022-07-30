@@ -28,7 +28,6 @@ class JugadorController extends Controller
     public function create()
     {
         $equipos = Club::all();
-        // dd($equipos);
         return view('jugadores.create', compact('equipos'));
     }
 
