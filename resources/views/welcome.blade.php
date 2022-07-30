@@ -86,7 +86,7 @@
                                 @endphp
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">No hay equipos para mostrar</td>
+                                        <td colspan="6" class="text-center">No hay datos para mostrar</td>
                                     </tr>
                                 @endforelse
                             </tbody>

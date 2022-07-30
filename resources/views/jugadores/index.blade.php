@@ -42,7 +42,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center">No hay equipos para mostrar</td>
+                                    <td colspan="6" class="text-center">No hay jugadores para mostrar</td>
                                 </tr>
                             @endforelse
                         </tbody>
