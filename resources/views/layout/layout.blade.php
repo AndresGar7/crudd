@@ -12,15 +12,16 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <!-- Se encarga de cargar los iconos que contiene la pagina -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-    {{-- <style>
-        body {
-            font-family: 'Nunito', sans-serif;
+    
+    <style>
+        body{
+            background-color: black;
         }
-    </style> --}}
+    </style>
+
 </head>
 <body>
-    <div class="container pt-5 mt-5">
+    <div class="container pt-5">
         <header>
             @include('partials.header')
         </header>
@@ -56,6 +57,17 @@
                         title: "Excelente",
                         text: "La Equipo se actualizó correctamente.",
                         icon: "success",
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: "Aceptar!",
+                        allowOutsideClick: false
+                    })
+        @endif
+
+        @if (session('existe'))
+            Swal.fire({
+                        title: "Error",
+                        text: "El equipo contiene jugadores, por favor elimarlos, antes de eliminar al equipo",
+                        icon: "error",
                         confirmButtonColor: "#3085d6",
                         confirmButtonText: "Aceptar!",
                         allowOutsideClick: false

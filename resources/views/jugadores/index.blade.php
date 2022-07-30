@@ -18,8 +18,8 @@
             <div class="col-lg-12 col-sm-12">
                 <div class="table-responsive">
                     <table id="datos" class="table table-bordered table-hover shadow display nowrap" style="width:100%">
-                        <thead class="bg-success text-center">
-                            <tr>
+                        <thead class="bg-warning text-center">
+                            <tr>    
                                 <th class="text-dark">#Jugador</th>
                                 <th>Nombre</th>
                                 <th>Club</th>
@@ -46,7 +46,7 @@
                                 </tr>
                             @endforelse
                         </tbody>
-                        <tfoot class="bg-success text-center">
+                        <tfoot class="bg-warning text-center">
                             <tr>
                                 <th class="text-dark">#Jugador</th>
                                 <th>Nombre</th>

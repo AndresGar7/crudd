@@ -6,6 +6,7 @@ use App\Models\Club;
 use App\Models\Liga;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClubRequest;
+use App\Models\Jugador;
 use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller
@@ -94,8 +95,16 @@ class ClubController extends Controller
     public function update(Club $club,ClubRequest $request)
     {
 
+        $jugadores = Jugador::where('idEquipo', $club->id)->get();
 
-        // return request('liga');
+        
+        foreach($jugadores as $jugador){
+            $jugador->update([
+                'equipo' => request('name')
+            ]); 
+        }
+
+        
         $club->update([
             'equipo' => request('name'),
             'idLiga' => request('liga')
@@ -112,7 +121,14 @@ class ClubController extends Controller
      */
     public function destroy(Club $club)
     {
-        $club->delete();
-        return redirect()->route('club.index', $club);
+        $existe = Jugador::where('idEquipo', $club->id)->count();
+
+        if($existe){
+            return redirect()->route('club.index')->with('existe', 'ok');
+        }else{
+            $club->delete();
+            return redirect()->route('club.index', $club);
+        }
+
     }
 }

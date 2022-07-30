@@ -20,10 +20,9 @@
                     <table id="datos" class="table table-bordered table-hover shadow display nowrap" style="width:100%">
                         <thead class="bg-success text-center">
                             <tr>
-                                <th class="text-dark">#Equipo</th>
+                                <th class="text-dark">#ID</th>
                                 <th>Equipo</th>
                                 <th>Liga</th>
-                                <th>#Jugadores</th>
                                 <th>Fecha Creacion</th>
                                 <th>Realizar</th>
                             </tr>
@@ -34,7 +33,6 @@
                                     <td class="text-center">{{ $club->id }}</td>
                                     <td class="text-center">{{ $club->equipo }}</td>
                                     <td class="text-center">{{ $club->nombre }}</td>
-                                    <td></td>
                                     <td class="text-center">{{ $club->created_at }}</td>
                                     <td class="text-center">
                                         <a class="btn btn-outline-dark btn-lg align-center" href="{{ route('club.edit', $club->id) }}">Ver</a>
@@ -48,10 +46,9 @@
                         </tbody>
                         <tfoot class="bg-success text-center">
                             <tr>
-                                <th class="text-dark">#Equipo</th>
+                                <th class="text-dark">#ID</th>
                                 <th>Equipo</th>
                                 <th>Liga</th>
-                                <th>#Jugadores</th>
                                 <th>Fecha Creacion</th>
                                 <th>Realizar</th>
                             </tr>
