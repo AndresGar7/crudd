@@ -62,12 +62,24 @@
                         allowOutsideClick: false
                     })
         @endif
-
+        
         @if (session('existe'))
             Swal.fire({
                         title: "Error",
                         text: "El equipo contiene jugadores, por favor elimarlos, antes de eliminar al equipo",
                         icon: "error",
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: "Aceptar!",
+                        allowOutsideClick: false
+                    })
+        @endif
+
+        
+        @if (session('eliminado'))
+            Swal.fire({
+                        title: "Excelente",
+                        text: "Los datos fueron eliminados correctamente.",
+                        icon: "success",
                         confirmButtonColor: "#3085d6",
                         confirmButtonText: "Aceptar!",
                         allowOutsideClick: false

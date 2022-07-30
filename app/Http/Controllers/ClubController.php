@@ -127,7 +127,7 @@ class ClubController extends Controller
             return redirect()->route('club.index')->with('existe', 'ok');
         }else{
             $club->delete();
-            return redirect()->route('club.index', $club);
+            return redirect()->route('club.index', $club)->with('eliminado', 'ok');
         }
 
     }
