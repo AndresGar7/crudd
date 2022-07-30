@@ -4,9 +4,9 @@
 
 @section('content')
     <div class="card-header">
-        <h5 class="card-title">Edita Equipo</h5>
+        <h5 class="card-title">Editar Jugador</h5>
     </div>
-    <div class="card-body bg-info">
+    <div class="card-body bg-warning">
         <div class="card  col-8 mx-auto ">
             <form action="{{ route('jugador.update', $jugador) }}" method="POST">
                 @csrf   @method('PATCH')
@@ -43,7 +43,7 @@
                         </form>
                         <form method="POST" action="{{ route('jugador.destroy' , $jugador) }}">
                             @csrf @method('DELETE')
-                            <button  class="btn btn-danger d-flex justify-content-between mx-2">Eliminar</button>
+                            <button  class="btn btn-danger d-flex justify-content-between mx-2" style="font-size: 23px;">Eliminar</button>
                         </form>
                         {{-- <button type="button" onclick="cancelar()" class="btn btn-secondary btn-lg mx-3">Cancelar</button> --}}
                     </div>

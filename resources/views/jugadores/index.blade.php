@@ -24,7 +24,7 @@
                                 <th>Nombre</th>
                                 <th>Club</th>
                                 <th>Edad</th>
-                                <th>Fecha Creacion</th>
+                                <th>Fecha Creación</th>
                                 <th>Realizar</th>
                             </tr>
                         </thead>
@@ -52,7 +52,7 @@
                                 <th>Nombre</th>
                                 <th>Club</th>
                                 <th>Edad</th>
-                                <th>Fecha Creacion</th>
+                                <th>Fecha Creación</th>
                                 <th>Realizar</th>
                             </tr>
                         </tfoot>

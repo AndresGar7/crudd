@@ -4,9 +4,9 @@
 
 @section('content')
     <div class="card-header">
-        <h5 class="card-title">Edita Equipo</h5>
+        <h5 class="card-title">Editar Equipo</h5>
     </div>
-    <div class="card-body bg-info">
+    <div class="card-body bg-success">
         <div class="card  col-8 mx-auto ">
             <form action="{{ route('club.update', $club) }}" method="POST">
                 @csrf   @method('PATCH')
@@ -35,7 +35,7 @@
                         </form>
                         <form method="POST" action="{{ route('club.destroy' , $club) }}">
                             @csrf @method('DELETE')
-                            <button  class="btn btn-danger d-flex justify-content-between mx-2">Eliminar</button>
+                            <button  class="btn btn-danger d-flex justify-content-between mx-2" style="font-size: 23px;">Eliminar</button>
                         </form>
                     </div>
                 </div>

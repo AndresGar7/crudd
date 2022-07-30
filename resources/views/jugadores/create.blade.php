@@ -6,7 +6,7 @@
     <div class="card-header">
         <h5 class="card-title">Agregar Jugador Nuevo</h5>
     </div>
-    <div class="card-body bg-success ">
+    <div class="card-body bg-warning ">
         <div class="card  col-8 mx-auto ">
             <form action="{{ route('jugador.store') }}" method="POST">
                 @csrf

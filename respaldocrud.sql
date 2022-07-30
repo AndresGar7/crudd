@@ -32,7 +32,7 @@ CREATE TABLE `clubes` (
   UNIQUE KEY `clubes_equipo_unique` (`equipo`),
   KEY `clubes_idliga_foreign` (`idLiga`),
   CONSTRAINT `clubes_idliga_foreign` FOREIGN KEY (`idLiga`) REFERENCES `ligas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `clubes` (
 
 LOCK TABLES `clubes` WRITE;
 /*!40000 ALTER TABLE `clubes` DISABLE KEYS */;
-INSERT INTO `clubes` VALUES (3,'Real  Madrid',1,'2022-07-29 22:20:47','2022-07-30 09:02:34'),(4,'Barcelona',1,'2022-07-30 06:21:28','2022-07-30 06:21:28'),(6,'Paris SG',3,'2022-07-30 09:42:24','2022-07-30 09:42:24');
+INSERT INTO `clubes` VALUES (1,'Real Madrid',1,'2022-07-30 10:24:52','2022-07-30 10:24:52'),(2,'Barcelona',1,'2022-07-30 10:25:01','2022-07-30 10:25:01'),(3,'Juventus',5,'2022-07-30 10:25:11','2022-07-30 10:25:11'),(4,'Inter',5,'2022-07-30 10:25:21','2022-07-30 10:25:21'),(5,'Paris SG',3,'2022-07-30 10:25:40','2022-07-30 10:25:40'),(6,'Manchester City',2,'2022-07-30 10:26:09','2022-07-30 10:26:09'),(7,'Liverpool',2,'2022-07-30 10:26:22','2022-07-30 10:26:22'),(8,'Bayer Munich',4,'2022-07-30 10:32:29','2022-07-30 10:32:29');
 /*!40000 ALTER TABLE `clubes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `jugadores` (
   PRIMARY KEY (`id`),
   KEY `jugadores_idequipo_foreign` (`idEquipo`),
   CONSTRAINT `jugadores_idequipo_foreign` FOREIGN KEY (`idEquipo`) REFERENCES `clubes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `jugadores` (
 
 LOCK TABLES `jugadores` WRITE;
 /*!40000 ALTER TABLE `jugadores` DISABLE KEYS */;
-INSERT INTO `jugadores` VALUES (1,4,'Andres Garcia Cañas',28,'Barcelona','2022-07-29 22:20:59','2022-07-30 07:49:29'),(3,3,'Julian Gil',22,'Real  Madrid','2022-07-30 07:15:03','2022-07-30 09:02:33'),(5,3,'Esteban Reyes',24,'Real  Madrid','2022-07-30 07:18:42','2022-07-30 09:02:34'),(6,4,'Carlos Herrera',40,'Barcelona','2022-07-30 07:50:29','2022-07-30 07:50:29'),(7,6,'Abraham Tita',5,'Paris SG','2022-07-30 09:43:50','2022-07-30 09:43:50');
+INSERT INTO `jugadores` VALUES (1,7,'Luis Diaz',30,'Liverpool','2022-07-30 10:33:20','2022-07-30 10:33:20'),(2,1,'Karim Benzema',34,'Real Madrid','2022-07-30 10:33:43','2022-07-30 10:33:43'),(3,2,'Lewandosky',36,'Barcelona','2022-07-30 10:34:02','2022-07-30 11:01:39'),(4,2,'Dembele',23,'Barcelona','2022-07-30 10:41:29','2022-07-30 10:41:29'),(5,5,'Messi',37,'Paris SG','2022-07-30 10:41:49','2022-07-30 10:41:49'),(6,6,'De Bruyn',27,'Manchester City','2022-07-30 10:42:47','2022-07-30 10:42:47'),(7,1,'Vinisius',24,'Real Madrid','2022-07-30 10:43:35','2022-07-30 10:43:35'),(8,4,'Lautaro Martinez',25,'Inter','2022-07-30 11:00:54','2022-07-30 11:00:54'),(9,7,'Salah',32,'Liverpool','2022-07-30 11:02:16','2022-07-30 11:02:16'),(10,5,'Neymar',29,'Paris SG','2022-07-30 11:02:43','2022-07-30 11:02:43');
 /*!40000 ALTER TABLE `jugadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,12 +114,11 @@ DROP TABLE IF EXISTS `ligas`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ligas` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `liga` enum('esp','ing','fra','ale') COLLATE utf8mb4_unicode_ci NOT NULL,
   `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +127,7 @@ CREATE TABLE `ligas` (
 
 LOCK TABLES `ligas` WRITE;
 /*!40000 ALTER TABLE `ligas` DISABLE KEYS */;
-INSERT INTO `ligas` VALUES (1,'esp','Espanola','2022-07-29 22:12:51','2022-07-29 22:12:51'),(2,'ing','Inglesa','2022-07-29 22:12:51','2022-07-29 22:12:51'),(3,'fra','Francesa','2022-07-29 22:12:51','2022-07-29 22:12:51'),(4,'ale','Alemana','2022-07-29 22:12:51','2022-07-29 22:12:51');
+INSERT INTO `ligas` VALUES (1,'Espanola','2022-07-30 10:21:13','2022-07-30 10:21:13'),(2,'Inglesa','2022-07-30 10:21:13','2022-07-30 10:21:13'),(3,'Francesa','2022-07-30 10:21:13','2022-07-30 10:21:13'),(4,'Alemana','2022-07-30 10:21:13','2022-07-30 10:21:13'),(5,'Italiana','2022-07-30 10:21:13','2022-07-30 10:21:13');
 /*!40000 ALTER TABLE `ligas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-30 14:02:03
+-- Dump completed on 2022-07-30 15:03:38

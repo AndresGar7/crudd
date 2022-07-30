@@ -23,7 +23,7 @@
                                 <th class="text-dark">#ID</th>
                                 <th>Equipo</th>
                                 <th>Liga</th>
-                                <th>Fecha Creacion</th>
+                                <th>Fecha Creación</th>
                                 <th>Realizar</th>
                             </tr>
                         </thead>
@@ -49,7 +49,7 @@
                                 <th class="text-dark">#ID</th>
                                 <th>Equipo</th>
                                 <th>Liga</th>
-                                <th>Fecha Creacion</th>
+                                <th>Fecha Creación</th>
                                 <th>Realizar</th>
                             </tr>
                         </tfoot>

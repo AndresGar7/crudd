@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
+use App\Models\Jugador;
 use App\Models\Liga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +20,10 @@ class HomeController extends Controller
         ->groupBy('jugadores.equipo','jugadores.idEquipo')
         ->get();
 
+        $clubes = Club::count();
+        $jugadores = Jugador::count();
+
         $ligas = Liga::all();
-        return view('welcome', compact('datos', 'ligas'));
+        return view('welcome', compact('datos', 'ligas','clubes', 'jugadores'));
     }
 }
